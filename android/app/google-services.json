@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "474860368986",
+    "project_id": "phoneauth-70c53",
+    "storage_bucket": "phoneauth-70c53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474860368986:android:180c224af15d572b7d9463",
+        "android_client_info": {
+          "package_name": "com.avtech.phone_auth_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474860368986-14ftkhs9k064jo84b6ofnc8cvb0mp3s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5OUaeyCBwhtirUqG8mBHBr419VESrrIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474860368986-14ftkhs9k064jo84b6ofnc8cvb0mp3s0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
