@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phone_auth_flutter/cubits/auth_cubits/auth_cubit.dart';
+import 'package:phone_auth_flutter/cubits/auth_cubits/auth_state.dart';
+import 'package:phone_auth_flutter/screens/home_screen.dart';
 import 'package:phone_auth_flutter/screens/mobile_screen.dart';
 
 Future<void> main() async {
@@ -24,7 +26,24 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MobileScreen(),
+        home: BlocBuilder<AuthCubit, AuthState>(
+          buildWhen: (oldState, newState) {
+            return oldState is AuthInitialState;
+          },
+          builder: (context, state) {
+            if (state is AuthLoggedInState) {
+              return HomeScreen();
+            } else if (state is AuthLoggedOutState) {
+              return MobileScreen();
+            } else {
+              return Scaffold(
+                body: Center(
+                  child: Text('Firebase phone auth with bloc'),
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }

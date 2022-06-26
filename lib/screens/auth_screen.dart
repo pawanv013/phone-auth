@@ -21,6 +21,7 @@ class AuthScreen extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
+                keyboardType: TextInputType.number,
                 controller: _otp,
                 onChanged: (value) {},
                 decoration: InputDecoration(
@@ -40,16 +41,31 @@ class AuthScreen extends StatelessWidget {
                           builder: (context) => HomeScreen(),
                         ),
                       );
+                    } else if (state is AuthErrorState) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(state.error),
+                        ),
+                      );
                     }
                   },
                   builder: (context, state) {
+                    if (state is AuthLoaddingState) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     return Row(
                       children: [
                         Expanded(
                           child: SizedBox(
                             height: 60,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .verifyOtp(_otp.text);
+                              },
                               child: Text('Verify OTP'),
                             ),
                           ),

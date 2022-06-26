@@ -19,6 +19,7 @@ class MobileScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextFormField(
                 keyboardType: TextInputType.phone,
